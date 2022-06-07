@@ -5,11 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.*;
 
-@Controller
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
 @SpringBootApplication
 public class NoteAppApplication {
 
-	@RequestMapping("/")
+	@GetMapping("/")
 	@ResponseBody
 	String home() {
 		return "Hello World!";
