@@ -17,13 +17,13 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
-//    @ResponseBody
+    @ResponseBody
     String home() {
         return "Hello World!";
     }
 
     @PostMapping("/register")
-    @ResponseBody
+//    @ResponseBody
     public List<String> addUser(@RequestBody UserDto userDto) {
         String passHash = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(passHash);
@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    @ResponseBody
+//    @ResponseBody
     public List<String> userLogin(@RequestBody UserDto userDto) {
         return userService.userLogin(userDto);
     }
