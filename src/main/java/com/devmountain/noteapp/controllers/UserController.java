@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("https://notes-app-java.herokuapp.com/")
+@RequestMapping()
 public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    @GetMapping("/")
+    @GetMapping("/")
     @ResponseBody
     String home() {
         return "Hello World!";
