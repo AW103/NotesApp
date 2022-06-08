@@ -24,9 +24,14 @@ public class UserServiceImpl implements UserService {
     public List<String> addUser(UserDto userDto) {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
-        userRepository.saveAndFlush(user);
-        response.add("User successfully added!");
-        return response;
+        try {
+            userRepository.saveAndFlush(user);
+            response.add("User successfully added!");
+            return response;
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
+            return response;
+        }
     }
 
     @Override
