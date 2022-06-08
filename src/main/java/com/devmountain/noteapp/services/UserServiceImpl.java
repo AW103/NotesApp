@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Override
     @Transactional
     public List<String> addUser(UserDto userDto) {
         List<String> response = new ArrayList<>();
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService {
         return response;
     }
 
+    @Override
     public List<String> userLogin(UserDto userDto) {
         List<String> response = new ArrayList<>();
         Optional<User> userOptional = userRepository.findByUsername(userDto.getUsername());
