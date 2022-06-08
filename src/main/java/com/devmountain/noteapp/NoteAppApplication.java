@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @SpringBootApplication
 public class NoteAppApplication {
 
-//	@GetMapping("/")
-//	@ResponseBody
-//	String home() {
-//		return "Hello World!";
-//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(NoteAppApplication.class, args);
