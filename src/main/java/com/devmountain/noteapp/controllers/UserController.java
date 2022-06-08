@@ -17,7 +17,7 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
-    @ResponseBody
+//    @ResponseBody
     String home() {
         return "Hello World!";
     }
