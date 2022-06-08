@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+//@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -22,7 +22,7 @@ public class UserController {
         return "Hello World!";
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public List<String> addUser(@RequestBody UserDto userDto) {
         String passHash = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(passHash);
