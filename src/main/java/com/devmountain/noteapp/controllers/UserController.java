@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("https://notes-app-java.herokuapp.com/")
 public class UserController {
     @Autowired
     private UserService userService;
