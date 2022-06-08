@@ -47,7 +47,7 @@ public class NoteServiceImpl {
     public List<NoteDto> getAllNotesByUserId(Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         if(userOptional.isPresent()){
-            List<Note> noteList = noteRepository.findByUserEquals(userOptional.get());
+            List<Note> noteList = noteRepository.findAllByUserEquals(userOptional.get());
             return noteList.stream().map(note -> new NoteDto(note)).collect(Collectors.toList());
         }
         return Collections.emptyList();

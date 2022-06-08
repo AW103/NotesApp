@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
-    List<Note> findByUserEquals(User user);
+    List<Note> findAllByUserEquals(User user);
 }
