@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
             return response;
         } catch (Exception error) {
             System.out.println(error.getMessage());
+            response.add("Error registering user");
             return response;
         }
     }
@@ -38,17 +39,26 @@ public class UserServiceImpl implements UserService {
     public List<String> userLogin(UserDto userDto) {
         List<String> response = new ArrayList<>();
         Optional<User> userOptional = userRepository.findByUsername(userDto.getUsername());
-        if(userOptional.isPresent()) {
-            if(passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())){
-            response.add("User successfully logged in!");
-            response.add(String.valueOf(userOptional.get().getId()));
-             } else {
-                response.add("Username or password incorrect");
-            }
-        } else {
-            response.add("Uh oh...error with logging user in.");
-        }
-        return response;
+       try {
+           if (userOptional.isPresent()) {
+               if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())) {
+                   response.add("User successfully logged in!");
+                   response.add(String.valueOf(userOptional.get().getId()));
+                   response.add(userOptional.get().getUsername() + " has been logged in.");
+               } else {
+                   response.add("Error");
+                   response.add("Username or password incorrect");
+               }
+           } else {
+               response.add("Error");
+               response.add("Uh oh...error with logging user in.");
+           }
+           return response;
+       } catch (Exception error) {
+           System.out.println(error.getMessage());
+           response.add("Error");
+           return response;
+       }
     }
 
 }

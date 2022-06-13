@@ -11,7 +11,7 @@ public interface NoteService {
     void addNote(NoteDto noteDto, Long userId);
 
     @Transactional
-    void deleteNote(Long noteId);
+    String deleteNote(Long noteId);
 
     @Transactional
     void updateNoteById(NoteDto noteDto);

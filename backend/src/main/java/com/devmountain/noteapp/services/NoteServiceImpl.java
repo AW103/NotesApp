@@ -32,9 +32,10 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     @Transactional
-    public void deleteNote(Long noteId) {
+    public String deleteNote(Long noteId) {
         Optional<Note> noteOptional = noteRepository.findById(noteId);
         noteOptional.ifPresent(note -> noteRepository.delete(note));
+        return "Note of id " + noteId + "deleted.";
     }
 
     @Override
